@@ -53,17 +53,17 @@ public class CmdTrailSet extends TempFlyCommand {
 			return;
 		}
 		
-		if (Particles.oldParticles()) {
-			try {Effect.valueOf(particle);} catch (Exception e) {
-				U.m(s, V.invalidParticle.replaceAll("\\{PARTICLE}", particle));
-				return;
-			}
-		} else {
+//		if (Particles.oldParticles()) {
+//			try {Effect.valueOf(particle);} catch (Exception e) {
+//				U.m(s, V.invalidParticle.replaceAll("\\{PARTICLE}", particle));
+//				return;
+//			}
+//		} else {
 			try {Particle.valueOf(particle);} catch (Exception e) {
 				U.m(s, V.invalidParticle.replaceAll("\\{PARTICLE}", particle));
 				return;
 			}
-		}
+//		}
 		Particles.setTrail(((Player)target).getUniqueId(), particle.toUpperCase());
 		U.m(target, V.trailSetSelf
 				.replaceAll("\\{PARTICLE}", particle));

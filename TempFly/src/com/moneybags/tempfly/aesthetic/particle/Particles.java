@@ -29,7 +29,7 @@ public class Particles {
 		tempfly = plugin;
 		try {dustOptions = Class.forName("org.bukkit.Particle$DustOptions");} catch (Exception e) {}
 		try {blockData = Class.forName("org.bukkit.block.data.BlockData");} catch (Exception e) {}
-		oldParticles = oldParticles();
+		oldParticles = false;
 	}
 	
 	public static boolean oldParticles() {
@@ -42,7 +42,7 @@ public class Particles {
 			Particle particle = null;
 			try {particle = Particle.valueOf(s.toUpperCase());} catch (Exception e1) {
 				try {particle = Particle.valueOf(V.particleType.toUpperCase());} catch (Exception e2) {
-					particle = Particle.VILLAGER_HAPPY;
+					particle = Particle.HAPPY_VILLAGER;
 				};
 			}
 			
@@ -57,7 +57,7 @@ public class Particles {
 					loc.getWorld().spawnParticle(particle, loc, 1, 0, 0, 0, 0.1);
 				}
 			} catch (Exception e) {
-				loc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, loc, 1, 0, 0, 0, 0.1);
+				loc.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, loc, 1, 0, 0, 0, 0.1);
 			}
 		} else {
 			Effect particle = null;
@@ -67,7 +67,7 @@ public class Particles {
 			}
 			try {particle = Effect.valueOf(s.toUpperCase());} catch (Exception e1) {
 				try {particle = Effect.valueOf(V.particleType);} catch (Exception e2) {
-					particle = Effect.valueOf("HAPPY_VILLAGER");	
+					particle = Effect.valueOf("HAPPY_VILLAGER");
 				}
 			}
 			loc.getWorld().playEffect(loc, particle, 1);
