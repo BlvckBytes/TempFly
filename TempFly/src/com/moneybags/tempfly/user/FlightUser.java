@@ -17,8 +17,6 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-import com.moneybags.tempfly.aesthetic.ActionBarAPI;
-import com.moneybags.tempfly.aesthetic.TitleAPI;
 import com.moneybags.tempfly.aesthetic.particle.Particles;
 import com.moneybags.tempfly.environment.FlightEnvironment;
 import com.moneybags.tempfly.environment.RelativeTimeRegion;
@@ -750,7 +748,7 @@ public class FlightUser {
 	}
 	
 	public void doActionBar() {
-		ActionBarAPI.sendActionBar(p, timeManager.regexString(V.actionText, getTime()));
+		p.sendActionBar(timeManager.regexString(V.actionText, getTime()));
 	}
 	
 	
@@ -1023,8 +1021,8 @@ public class FlightUser {
 				manager.getTempFly().getDataBridge().stageChange(DataPointer.of(DataValue.PLAYER_TIME, p.getUniqueId().toString()), time);	
 				
 				if (V.warningTimes.contains((long)time)) {
-					TitleAPI.sendTitle(p, 15, 30, 15, timeManager.regexString(V.warningTitle, time),
-							timeManager.regexString(V.warningSubtitle, time));
+					p.sendTitle(timeManager.regexString(V.warningTitle, time),
+						timeManager.regexString(V.warningSubtitle, time), 15, 30, 15);
 				}
 				if (V.actionBar) {doActionBar();}
 				

@@ -32,11 +32,6 @@ public class Particles {
 		oldParticles = false;
 	}
 	
-	public static boolean oldParticles() {
-		String version = Bukkit.getVersion();
-		return (version.contains("1.6")) || (version.contains("1.7")) || (version.contains("1.8")) || version.contains("1.9");
-	}
-	
 	public static void play(Location loc, String s) {
 		if (!oldParticles) {
 			Particle particle = null;

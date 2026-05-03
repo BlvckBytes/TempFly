@@ -86,11 +86,7 @@ public class CmdTrailSet extends TempFlyCommand {
 			}
 		} else if (args.length <= 3) {
 			List<String> particles = new ArrayList<>();
-			if (!Particles.oldParticles()) {
-				Arrays.asList(Particle.values()).stream().forEach(particle -> particles.add(particle.toString()));
-			} else {
-				Arrays.asList(Effect.values()).stream().forEach(particle -> particles.add(particle.toString()));
-			}
+			Arrays.asList(Effect.values()).stream().forEach(particle -> particles.add(particle.toString()));
 			return particles;
 		}
 		

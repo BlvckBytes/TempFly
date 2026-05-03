@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Particle;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -74,23 +73,12 @@ public class PageTrails extends DynamicPage {
 		
 		Player p = session.getPlayer();
 		List<String> particles = new ArrayList<>();
-		if (Particles.oldParticles()) {
-			for (Effect e: Effect.values()) {
-				if (e.toString().equalsIgnoreCase("ITEM_BREAK")) {
-					continue;
-				}
-				if (p.hasPermission("tempfly.trail." + e.toString())) {
-					particles.add(e.toString());
-				}
+		for (Particle particle: Particle.values()) {
+			if (particle.toString().contains("LEGACY")) {
+				continue;
 			}
-		} else {
-			for (Particle particle: Particle.values()) {
-				if (particle.toString().contains("LEGACY")) {
-					continue;
-				}
-				if (p.hasPermission("tempfly.trail." + particle.toString())) {
-					particles.add(particle.toString());
-				}
+			if (p.hasPermission("tempfly.trail." + particle.toString())) {
+				particles.add(particle.toString());
 			}
 		}
 		allParticles = particles;
